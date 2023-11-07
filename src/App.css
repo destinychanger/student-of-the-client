@@ -1,0 +1,29 @@
+.pageLayout {
+  display: flex;
+  background: #fbfbfe;
+  height: 100vh;
+}
+
+.leftPanel {
+  display: inline-flex;
+  height: 100vh;
+  width: 39%;
+  padding-left: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.rightPanel {
+  display: flex;
+  width: 60%;
+  margin-left: 1%;
+  border-left: 1px solid rgb(206, 210, 217);
+}
+
+.nav {
+  width: 50px;
+  background-color: blue;
+  height: 100vh;
+}

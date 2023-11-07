@@ -1,0 +1,226 @@
+.chatView {
+  text-align: center;
+  /* background-color: #8d9fc4; */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-left: 20px;
+}
+
+.react-chatbot-kit-chat-inner-container {}
+
+.react-chatbot-kit-chat-message-container {}
+
+.react-chatbot-kit-chat-bot-message {
+  margin-left: 0%;
+  width: 400px;
+}
+
+.react-chatbot-kit-chat-input-container {
+  position: absolute;
+  bottom: 0;
+}
+
+
+.react-chatbot-kit-chat-container {
+  width: 100%;
+  margin: 0 20px;
+}
+
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.cs-main-container {
+  border: none;
+  background-color: #FBFBFE;
+}
+
+.cs-message--outgoing .cs-message__content {
+  text-align: left;
+  background-color: #1E49E2 !important;
+  color: white !important;
+  border-radius: 10.192px !important;
+}
+
+.cs-message__content {
+  text-align: left;
+  color: #244ED9 !important;
+  background-color: #F2F4FD !important;
+
+}
+
+.Bot .cs-message__content {
+  padding-bottom: 40px !important;
+}
+
+.cs-message-input__content-editor-wrapper {
+  background-color: white !important;
+  border: solid 1px #D0D6DE !important;
+  color: black !important;
+  font-weight: 600;
+  font-size: 16px;
+  /* width: 500px !important; */
+}
+
+.cs-message-input__content-editor-container {}
+
+.cs-message-input__content-editor {
+  background-color: white !important;
+  text-align: left;
+  font-size: 16px;
+
+}
+
+.cs-message-input__content-editor[data-placeholder]:empty:before {}
+
+.cs-message-input--disabled .cs-message-input__content-editor {
+  background-color: #F2F4FD !important;
+  /* width: 500px !important; */
+}
+
+.cs-message-input--disabled .cs-message-input__content-editor-wrapper {
+  background-color: #F2F4FD !important;
+  /* width: 500px !important; */
+}
+
+.cs-chat-container .cs-message-input .cs-message-input__content-editor-wrapper:first-child {
+  margin-left: 25px !important;
+  margin-right: 40px
+}
+
+.footer {
+  font-size: 12px;
+  margin: 10px 25px;
+  text-align: left;
+  height: 50px;
+  padding: 5px;
+  color: #989898;
+}
+
+.cs-message-input__tools:last-child .cs-button:last-child {
+  margin-right: 0;
+  position: absolute;
+  right: 0;
+  color: black;
+}
+
+.cs-chat-container .cs-message-input {
+  border-top: solid 1px #d1dbe3 !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  display: inline-block !important;
+}
+
+
+.cs-message__footer {
+  margin-top: -30px !important;
+  display: block !important;
+  text-align: end !important;
+  padding-right: 20px !important;
+  padding-bottom: 10px !important;
+}
+
+.cs-message__footer img {
+  padding-left: 5px;
+  cursor: pointer;
+  height: 20px;
+}
+
+.exportPdf {
+  height: 35px;
+  margin-right: 20px;
+  z-index: 4;
+  position: absolute;
+  margin-top: -43px;
+  right: 0;
+}
+
+.exportPdf img {
+  vertical-align: bottom;
+}
+
+
+#customers td,
+#customers th {
+  border: 2px solid #ddd;
+  padding: 8px;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 500px;
+  overflow-y: auto;
+  display: inline-block;
+  white-space: initial;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #1E49E2;
+  color: white;
+  max-width: 100%;
+  white-space: nowrap;
+}

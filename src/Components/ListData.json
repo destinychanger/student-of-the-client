@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "image": "../Assets/CardImages/1.jpg",
+    "text": "Explore your client's financial information"
+  },
+  {
+    "id": 2,
+    "image": "../Assets/CardImages/2.jpg",
+    "text": "Get to know your client's leadership team"
+  },
+  {
+    "id": 3,
+    "image": "../Assets/CardImages/3.jpg",
+    "text": "Learn about your client's competitors"
+  },
+  {
+    "id": 4,
+    "image": "../Assets/CardImages/4.jpg",
+    "text": "Understand your client's history"
+  },
+  {
+    "id": 5,
+    "image": "../Assets/CardImages/5.jpg",
+    "text": "Discover news about your client"
+  },
+  {
+    "id": 6,
+    "image": "../Assets/CardImages/6.jpg",
+    "text": "Explore your client's published work"
+  }
+]

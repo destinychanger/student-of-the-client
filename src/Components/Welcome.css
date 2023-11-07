@@ -1,0 +1,21 @@
+.welcomeStatement {
+  color: #0e1f58;
+  font-family: "Open Sans";
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.25rem;
+  margin-left: 0%;
+}
+
+.subStatement {
+  color: #0e1f58;
+  align-items: flex-start;
+  display: flex;
+  font-family: "Open Sans";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5rem;
+  letter-spacing: 0.00938rem;
+}
