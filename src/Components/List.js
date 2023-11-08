@@ -1,5 +1,6 @@
-import { React } from "react";
+import { React, useState } from "react";
 import "./List.css"
+
 import image1 from "../Assets/CardImages/1.jpg";
 import image2 from "../Assets/CardImages/2.jpg";
 import image3 from "../Assets/CardImages/3.jpg";
@@ -53,6 +54,7 @@ let getTopicText = (e) => {
 };
 
 const List = (props) => {
+  const [cardIsDisabled,setCardIsDisabled]=useState(true);
   //create a new array by filtering the original array
   const filteredData = ListData.filter((el) => {
     //if no input the return the original
@@ -66,9 +68,10 @@ const List = (props) => {
   });
   return (
     <ul className="cards">
+      
       {filteredData.map((item) => (
-        <div className="card" text={item.text} onClick={getTopicText}>
-          <Card sx={{ maxWidth: 345, minHeight: 200, background: "#F2F4FD" }}>
+        <div className="card" text={item.text} onClick={cardIsDisabled?undefined:getTopicText}>
+          <Card sx={{opacity: cardIsDisabled ? 0.5 : 1, maxWidth: 345, minHeight: 200, background: "#F2F4FD",borderRadius:"24px" }}>
             <CardActionArea>
               <CardMedia
                 component="img"
@@ -86,6 +89,7 @@ const List = (props) => {
           </Card>
         </div>
       ))}
+      
     </ul>
   );
 }

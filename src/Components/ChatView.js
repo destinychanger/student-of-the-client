@@ -299,7 +299,7 @@ function ChatView() {
 
   return (
     <div style={{ height: `calc(100vh - 120px)` }}>
-      <div class="chatTitle" style={{ padding: 5, height: 30 }}>Student of the Client Chat Model V1.0</div>
+      <div class="chatTitle" style={{ padding: 12, height: 45 }}>Student of the Client Chat Model V1.0</div>
       <MainContainer>
         <ChatContainer>
           <MessageList
