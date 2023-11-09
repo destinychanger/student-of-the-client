@@ -18,13 +18,23 @@ import info from "../Assets/CardImages/info.svg";
 import up from "../Assets/CardImages/thumbsUp.svg";
 import down from "../Assets/CardImages/thumbsDown.svg";
 import Tooltip from '@mui/material/Tooltip';
-import jsPDF from 'jspdf';
+import JsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 
 function ChatView() {
+  const [messages, setMessages] = useState([
+    {
+      message:
+        "Hey there, great to meet you. Welcome to Student of the Client, your personal AI. My goal is to provide you with knowledge and information about a client. Ask me for questions to get more knowledgeable about a client, get help preparing for a meeting, or let’s talk about whatever’s on your mind. For starters, feel free to select a topic from the left-hand menu that you’d like to explore. What would you like to learn about your client? Take your time and know that I’m here to listen. What’s been happening?",
+      sentTime: "just now",
+      sender: "Bot",
+    },
+  ]);
   const [clientName, setclientName] = useState(null);
   const [topic, setTopic] = useState(null);
-  let [counter, setcounter] = useState(1);
+  const [isTyping, setIsTyping] = useState(false);
+  const [summary, setSummary] = useState(null);
 
   EventBus.$on('clientName', (data) => {
     setclientName(data)
@@ -33,31 +43,15 @@ function ChatView() {
   EventBus.$on('topic', (data) => {
     if (clientName) {
       setTopic(data)
-
     }
-    //handleSend(data);
-
-    console.log(topic);
   })
 
   useEffect(() => {
     if (clientName) {
       handleSend(topic);
     }
-
   }, [topic])
 
-  const [messages, setMessages] = useState([
-    {
-      message:
-        "👋 Hey there, great to meet you. Welcome to Student of the Client, your personal AI. My goal is to provide you with   knowledge and information for client engagements, projects, presentations, meetings, etc. Ask me for advice, for answers, or let’s talk about whatever’s on your mind. For starters, feel free to select a topic from the left-hand menu that you’d like to explore. What would you like to learn about your client? Take your time and know that I’m here to listen. What’s been happening?",
-      sentTime: "just now",
-      sender: "Bot",
-    },
-  ]);
-
-  const [isTyping, setIsTyping] = useState(false);
-  const [summary, setSummary] = useState(null);
 
   const HTMLdata = `
   <table id="tableFormat">
@@ -255,28 +249,25 @@ function ChatView() {
           },
         ]);
         setIsTyping(false);
+        console.log(messages)
       });
   }
 
 
 
-  const exportChatToPdf = async () => {
-    await getSummary();
-    console.log(summary)
-    // const doc = new jsPDF({
-    //   orientation: 'landscape',
-    //   format: 'a4',
-    //   unit: 'px',
-    // });
-    // doc.setFontSize(10);
-    // doc.html(`${HTMLdata}`, {
-    //   async callback(doc) {
-    //     await doc.save('pdf_name');
-    //   },
-    // });
-  };
 
   async function getSummary() {
+    const conversation = messages.slice(1).map(function (i) {
+      let type = i.sender == 'Bot' ? "Answer" : "Question"
+      return (
+        `<div style=" display:block; width:max-width">${type}: ${i.message}</div>`
+      )
+    }).join("")
+
+    const doc = new JsPDF();
+    console.log("CONVERSATION", conversation)
+
+
     await fetch(
       "https://student-of-the-client-backend-deployment-rp6izobdea-uc.a.run.app/api/summary",
       {
@@ -293,12 +284,25 @@ function ChatView() {
         return data.json();
       })
       .then((data) => {
-        setMessages(data.Answer || data.message)
+        setSummary(data.response.Answer || data.message);
+        doc.html(`<div>
+          <span><h4>Summary:<h4/> ${data.response.Answer || data.message}
+        </div><br/><div>${conversation}</div>`, {
+          async callback(doc) {
+            await doc.save('pdf_name');
+          },
+          width: 200,
+          windowWidth: 700,
+          orientation: 'portrait',
+          format: 'a4',
+          unit: "px",
+          margin: 10,
+        });
       });
   }
 
   return (
-    <div style={{ height: `calc(100vh - 120px)` }}>
+    <div style={{ height: `calc(100vh - 132px)` }}>
       <div class="chatTitle" style={{ padding: 12, height: 45 }}>Student of the Client Chat Model V1.0</div>
       <MainContainer>
         <ChatContainer>
@@ -339,7 +343,7 @@ function ChatView() {
           />
         </ChatContainer>
       </MainContainer>
-      {/* <button className="exportPdf" onClick={exportChatToPdf}><img src={exportPdf}></img>Export conversation </button> */}
+      <button className="exportPdf" onClick={getSummary}><img src={exportPdf}></img></button>
       <footer className="footer">
         © 2023 KPMG LLP, a Delaware limited liability partnership and a member firm of the KPMG global organization of independent member firms affiliated with KPMG International Limited, a private English company limited by guarantee. All rights reserved. Use of this system is governed by the <a href="#">Acceptable Use Policy</a> and the <a href="#">Personnel Data Privacy Notice.</a>
       </footer>

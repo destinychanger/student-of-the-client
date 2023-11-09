@@ -1,18 +1,16 @@
-.pageLayout{
+.pageLayout {
   display: flex;
   background: #FBFBFE;
   height: 100vh;
 }
 
 
-
-.rightPanel{
+.rightPanel {
   position: absolute;
   right: 0;
   display: flex;
-  width: 67%;
-  margin-left:1%;
-  border-left: 1px solid rgb(206, 210, 217);
+  width: 56%;
+  /* border-left: 1px solid rgb(206, 210, 217); */
 }
 
 
@@ -22,7 +20,6 @@
   height: 100vh;
 }
 
-.drawerContainer{
+.drawerContainer {
   height: 100vh;
 }
-

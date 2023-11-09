@@ -22,18 +22,17 @@ const drawerWidth = 60;
 
 
 export default function Navbar() {
-    
+
 
   return (
-    <Box sx={{ display: "flex"  }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <Drawer
-      PaperProps={{
-        sx: {
-          backgroundColor: "#0E1F58",
-        //   color: "red",
-        }
-      }}
+        PaperProps={{
+          sx: {
+            backgroundColor: "#244ED9",
+          }
+        }}
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -47,12 +46,12 @@ export default function Navbar() {
       >
         <Toolbar />
 
-        <List style={{ position:"absolute", width: "100%" }}>
+        <List style={{ position: "absolute", width: "100%" }}>
           {["Inbox", "Starred"].map((text, index) => (
-            <ListItem key={text}  disablePadding>
+            <ListItem key={text} disablePadding>
               <ListItemButton >
-                <ListItemIcon style={{ minWidth:"40px" }}>
-                  {index % 2 === 0 ? <MarkUnreadChatAltIcon style={{ color: "#fff" }} /> : <FileUploadIcon style={{ color: "#fff"}}/>}
+                <ListItemIcon style={{ minWidth: "40px" }}>
+                  {index % 2 === 0 ? <MarkUnreadChatAltIcon style={{ color: "#fff" }} /> : <FileUploadIcon style={{ color: "#fff" }} />}
                 </ListItemIcon>
                 {/* <ListItemText primary={text} /> */}
               </ListItemButton>

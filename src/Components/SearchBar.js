@@ -28,10 +28,10 @@ const SearchBar = () => {
           <Autocomplete
             disablePortal
             id="combo-box-demo"
+            sx={{ width: "98%", fontSize: 12, border: "1px solid #CED2D9", background: "#FFF", borderRadius: "10px", "& fieldset": { border: 'none' } }}
             options={[{ label: 'Apple Inc.' },
-            // { label: 'Johnson & Johnson' },
+            { label: 'Johnson & Johnson' },
             { label: 'Nike' },]}
-            sx={{ width: "98%", fontSize:12,border:"1px solid #CED2D9",background:"#FFF",borderRadius:"10px","& fieldset": { border: 'none' }}}
             onChange={clientChange}
             renderInput={(params) => <TextField {...params} label="Select Client" />}
           />
@@ -41,8 +41,8 @@ const SearchBar = () => {
             variant="outlined"
             label="Search for desired topic"
             placeholder="Search for desired topic"
-            sx={{ width: "98%",border:"1px solid #CED2D9",background:"#FFF",borderRadius:"10px","& fieldset": { border: 'none' } }}
-            style={{borderadius:"8px"}}
+            sx={{ width: "98%", border: "1px solid #CED2D9", background: "#FFF", borderRadius: "10px", "& fieldset": { border: 'none' } }}
+            style={{ borderadius: "8px" }}
           />
         </Stack>
         <List input={inputText} />
