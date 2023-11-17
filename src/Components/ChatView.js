@@ -19,8 +19,6 @@ import up from "../Assets/CardImages/thumbsUp.svg";
 import down from "../Assets/CardImages/thumbsDown.svg";
 import Tooltip from '@mui/material/Tooltip';
 import JsPDF from "jspdf";
-import html2canvas from "html2canvas";
-
 
 function ChatView() {
   const [messages, setMessages] = useState([
@@ -51,132 +49,6 @@ function ChatView() {
       handleSend(topic);
     }
   }, [topic])
-
-
-  const HTMLdata = `
-  <table id="tableFormat">
-    <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-    </tr>
-    <tr>
-      <td>Alfreds Futterkiste</td>
-      <td>Maria Anders</td>
-      <td>Germany</td>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-    </tr>
-    <tr>
-      <td>Berglunds snabbköp</td>
-      <td>Christina Berglund</td>
-      <td>Sweden</td>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-    </tr>
-    <tr>
-      <td>Centro comercial Moctezuma</td>
-      <td>Francisco Chang</td>
-      <td>Mexico</td>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-    </tr>
-    <tr>
-      <td>Ernst Handel</td>
-      <td>Roland Mendel</td>
-      <td>Austria</td>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-    </tr>
-    <tr>
-      <td>Island Trading</td>
-      <td>Helen Bennett</td>
-      <td>UK</td>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-    </tr>
-    <tr>
-      <td>Königlich Essen</td>
-      <td>Philip Cramer</td>
-      <td>Germany</td>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-    </tr>
-    <tr>
-      <td>Laughing Bacchus Winecellars</td>
-      <td>Yoshi Tannamuri</td>
-      <td>Canada</td>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-    </tr>
-    <tr>
-      <td>Magazzini Alimentari Riuniti</td>
-      <td>Giovanni Rovelli</td>
-      <td>Italy</td>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-    </tr>
-    <tr>
-      <td>North/South</td>
-      <td>Simon Crowther</td>
-      <td>UK</td>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-    </tr>
-    <tr>
-      <td>Paris spécialités</td>
-      <td>Marie Bertrand</td>
-      <td>France</td>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-      <td>Company</th>
-      <td>Contact</th>
-      <td>Country</th>
-    </tr>
-  </table>`
 
   const handleSend = async (message) => {
     if (!isTyping) {
@@ -253,21 +125,23 @@ function ChatView() {
       });
   }
 
-
-
-
-  async function getSummary() {
+  async function exportToPdf() {
     const conversation = messages.slice(1).map(function (i) {
       let type = i.sender == 'Bot' ? "Answer" : "Question"
       return (
-        `<div style=" display:block; width:max-width">${type}: ${i.message}</div>`
+        `<div style="margin-bottom:10px">
+          <span style="color:#0E1F58; font-size:18px; font-weight:700">${type}</span>
+          <section style="color:#0E1F58;font-size:18px;">${i.message}</section>
+        </div>`
       )
     }).join("")
 
-    const doc = new JsPDF();
+    const doc = new JsPDF({
+      orientation: 'p',
+      format: 'a4',
+      unit: "pt",
+    });
     console.log("CONVERSATION", conversation)
-
-
     await fetch(
       "https://student-of-the-client-backend-deployment-rp6izobdea-uc.a.run.app/api/summary",
       {
@@ -285,25 +159,31 @@ function ChatView() {
       })
       .then((data) => {
         setSummary(data.response.Answer || data.message);
-        doc.html(`<div>
-          <span><h4>Summary:<h4/> ${data.response.Answer || data.message}
-        </div><br/><div>${conversation}</div>`, {
+        doc.html(`
+        <div class="pdfReport">
+          <div class="summary">
+            <div style="font-size:32px; color:#0E1F58; font-weight:700">Client Summary</div>
+            <div style="font-size:22px; color:#0E1F58">${clientName}</div>
+            <div>${data.response.Answer || data.message}</div><br/>
+          </div>
+          <div class="conversation">
+            <div style="font-size:32px; color:#0E1F58; font-weight:700">Chat Conversation Extract</div>
+            ${conversation}
+          </div>
+        </div>`, {
           async callback(doc) {
-            await doc.save('pdf_name');
+            await doc.save(`${clientName}_Information_Export`);
           },
-          width: 200,
-          windowWidth: 700,
-          orientation: 'portrait',
-          format: 'a4',
-          unit: "px",
-          margin: 10,
+          width: 600,
+          windowWidth: 1000,
+          margin: 30,
         });
       });
   }
 
   return (
     <div style={{ height: `calc(100vh - 132px)` }}>
-      <div class="chatTitle" style={{ padding: 12, height: 45 }}>Student of the Client Chat Model V1.0</div>
+      <div class="chatTitle">Student of the Client Chat Model V1.0</div>
       <MainContainer>
         <ChatContainer>
           <MessageList
@@ -320,7 +200,8 @@ function ChatView() {
                       <Tooltip
                         arrow
                         placement={"left"}
-                        title={<div><h4>Citation: {messages[i]?.citation || "N/A"}</h4>
+                        title={<div>
+                          <h4>Citation: {messages[i]?.citation || "N/A"}</h4>
                           <h4>Document Name: {messages[i]?.documentName || "N/A"}</h4>
                           <h4>Page Number: {messages[i]?.pageNo || "N/A"}</h4>
                         </div>
@@ -343,7 +224,7 @@ function ChatView() {
           />
         </ChatContainer>
       </MainContainer>
-      <button className="exportPdf" onClick={getSummary}><img src={exportPdf}></img></button>
+      <button className="exportPdf" title="Export Pdf" disabled={!clientName} onClick={exportToPdf}><img src={exportPdf}></img></button>
       <footer className="footer">
         © 2023 KPMG LLP, a Delaware limited liability partnership and a member firm of the KPMG global organization of independent member firms affiliated with KPMG International Limited, a private English company limited by guarantee. All rights reserved. Use of this system is governed by the <a href="#">Acceptable Use Policy</a> and the <a href="#">Personnel Data Privacy Notice.</a>
       </footer>

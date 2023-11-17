@@ -1,8 +1,7 @@
 .main {
     display: flex;
     height: 100vh;
-    width: 100%;
-    /* align-items: center; */
+    width: 97%;
     flex-direction: column;
     row-gap: 20px;
 }

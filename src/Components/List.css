@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   padding-left: 0px;
   padding-right: 4%;
-  height: calc(100vh - 300px);
+  height: calc(100vh - 260px);
   overflow-y: scroll;
   text-align: left;
 }

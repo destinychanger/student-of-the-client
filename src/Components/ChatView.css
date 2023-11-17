@@ -8,6 +8,14 @@
   margin-left: 20px;
 }
 
+.chatTitle {
+  padding: 12px;
+  height: 45px;
+  color: #0e1f58;
+  font-family: "Open Sans";
+  font-weight: 600;
+}
+
 .react-chatbot-kit-chat-bot-message {
   margin-left: 0%;
   width: 400px;
@@ -90,13 +98,16 @@
 .cs-message-input__content-editor-wrapper {
   background-color: white !important;
   border: solid 1px #D0D6DE !important;
-  color: black !important;
-  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7) !important;
+  font-weight: 500;
   font-size: 16px;
-  width: 500px !important;
+  width: 80% !important;
 }
 
-.cs-message-input__content-editor-container {}
+.cs-message-input--disabled .cs-message-input__content-editor-wrapper {
+  background-color: #F2F4FD !important;
+  width: 80% !important;
+}
 
 .cs-message-input__content-editor {
   background-color: white !important;
@@ -105,21 +116,14 @@
 
 }
 
-.cs-message-input__content-editor[data-placeholder]:empty:before {}
-
 .cs-message-input--disabled .cs-message-input__content-editor {
   background-color: #F2F4FD !important;
-  width: 500px !important;
-}
-
-.cs-message-input--disabled .cs-message-input__content-editor-wrapper {
-  background-color: #F2F4FD !important;
-  width: 500px !important;
 }
 
 .cs-chat-container .cs-message-input .cs-message-input__content-editor-wrapper:first-child {
-  margin-left: 25px !important;
-  margin-right: 40px
+  /* margin-left: 25px !important;
+  margin-right: 40px */
+
 }
 
 .footer {
@@ -146,6 +150,11 @@
   display: inline-block !important;
 }
 
+.cs-button.cs-button--send {
+  position: absolute !important;
+  right: 20% !important;
+  width: 40px !important;
+}
 
 .cs-message__footer {
   margin-top: -30px !important;
@@ -162,12 +171,22 @@
 }
 
 .exportPdf {
-  height: 35px;
+  /* height: 35px;
   margin-right: 20px;
   z-index: 4;
   position: absolute;
   margin-top: -43px;
-  right: 0;
+  right: 0; */
+  height: 38px;
+  margin-right: 20px;
+  z-index: 4;
+  position: absolute;
+  margin-top: -45px;
+  left: 84%;
+  width: 50px;
+  background: white;
+  border: solid 1px #D0D6DE !important;
+  border-radius: 0.7rem;
 }
 
 .exportPdf img {
@@ -217,4 +236,13 @@ table th {
   color: white;
   max-width: 100%;
   white-space: nowrap;
+}
+
+.pdfReport table {
+  width: 100%;
+}
+
+.pdfReport ul {
+  padding: 5px;
+  margin: 0;
 }

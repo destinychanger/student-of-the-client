@@ -8,8 +8,15 @@ import "./SearchBar.css";
 import EventBus from "./EventBus";
 
 const SearchBar = () => {
-  const [inputText, setInputText] = useState("");
+  const clientDropdownList = [
+    { label: 'Apple Inc.' },
+    { label: 'Johnson & Johnson' },
+    { label: 'Nike' },
+    { label: 'Chevron Corporation' },
+    { label: 'Hess Corporation' },
+  ]
 
+  const [inputText, setInputText] = useState("");
 
   let inputHandler = (e) => {
     var text = e.target.value.toLowerCase();
@@ -29,9 +36,7 @@ const SearchBar = () => {
             disablePortal
             id="combo-box-demo"
             sx={{ width: "98%", fontSize: 12, border: "1px solid #CED2D9", background: "#FFF", borderRadius: "10px", "& fieldset": { border: 'none' } }}
-            options={[{ label: 'Apple Inc.' },
-            { label: 'Johnson & Johnson' },
-            { label: 'Nike' },]}
+            options={clientDropdownList}
             onChange={clientChange}
             renderInput={(params) => <TextField {...params} label="Select Client" />}
           />

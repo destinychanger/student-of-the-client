@@ -4,15 +4,12 @@
   height: 100vh;
 }
 
-
 .rightPanel {
   position: absolute;
   right: 0;
   display: flex;
   width: 56%;
-  /* border-left: 1px solid rgb(206, 210, 217); */
 }
-
 
 .nav {
   width: 50px;

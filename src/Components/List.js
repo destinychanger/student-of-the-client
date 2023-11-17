@@ -37,19 +37,19 @@ const ListData = [
     id: 3,
     image: image3,
     text: "Learn about your client's competitors",
-    cardIsDisabled: true
+    cardIsDisabled: false
   },
   {
     id: 5,
     image: image5,
     text: "Discover news about your client",
-    cardIsDisabled: true
+    cardIsDisabled: false
   },
   {
     id: 6,
     image: image6,
     text: "Explore your client's published work",
-    cardIsDisabled: true
+    cardIsDisabled: false
   },
 ];
 
