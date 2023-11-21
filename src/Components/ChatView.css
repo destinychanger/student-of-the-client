@@ -37,37 +37,6 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .read-the-docs {
   color: #888;
 }
@@ -101,12 +70,13 @@
   color: rgba(0, 0, 0, 0.7) !important;
   font-weight: 500;
   font-size: 16px;
-  width: 80% !important;
+  width: calc(80% - 60px) !important;
+  margin-left: 60px !important;
 }
 
 .cs-message-input--disabled .cs-message-input__content-editor-wrapper {
   background-color: #F2F4FD !important;
-  width: 80% !important;
+  width: calc(80% - 60px) !important;
 }
 
 .cs-message-input__content-editor {
@@ -120,11 +90,7 @@
   background-color: #F2F4FD !important;
 }
 
-.cs-chat-container .cs-message-input .cs-message-input__content-editor-wrapper:first-child {
-  /* margin-left: 25px !important;
-  margin-right: 40px */
-
-}
+.cs-chat-container .cs-message-input .cs-message-input__content-editor-wrapper:first-child {}
 
 .footer {
   font-size: 12px;
@@ -152,7 +118,7 @@
 
 .cs-button.cs-button--send {
   position: absolute !important;
-  right: 20% !important;
+  right: 22% !important;
   width: 40px !important;
 }
 
@@ -170,29 +136,35 @@
   height: 20px;
 }
 
-.exportPdf {
-  /* height: 35px;
-  margin-right: 20px;
-  z-index: 4;
-  position: absolute;
-  margin-top: -43px;
-  right: 0; */
+.MuiButtonBase-root.exportPdf {
   height: 38px;
   margin-right: 20px;
   z-index: 4;
   position: absolute;
   margin-top: -45px;
-  left: 84%;
+  left: calc(80% - -10px);
   width: 50px;
   background: white;
   border: solid 1px #D0D6DE !important;
   border-radius: 0.7rem;
+  cursor: pointer;
 }
 
-.exportPdf img {
-  vertical-align: bottom;
+.MuiButtonBase-root.newChat {
+  background: none;
+  border: none;
+  position: absolute;
+  left: 0;
+  margin-top: -50px;
+  z-index: 4;
+  cursor: pointer;
+  padding: 0;
 }
 
+.MuiButtonBase-root.newChat[disabled] img,
+.MuiButtonBase-root.exportPdf[disabled] img {
+  opacity: 0.3;
+}
 
 #customers td,
 #customers th {
@@ -201,7 +173,6 @@
   max-width: 100%;
   white-space: nowrap;
 }
-
 
 table {
   font-family: Arial, Helvetica, sans-serif;

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import "./List.css"
 import image1 from "../Assets/CardImages/1.png";
 import image2 from "../Assets/CardImages/2.jpg";
@@ -11,7 +11,6 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import "./Card.css";
 import EventBus from "./EventBus";
 
 const ListData = [

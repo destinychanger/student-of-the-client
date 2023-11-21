@@ -20,3 +20,13 @@
 .drawerContainer {
   height: 100vh;
 }
+
+.df-messenger {
+  position: absolute;
+  z-index: 9999;
+  right: 0;
+  padding: 5px;
+  bottom: 40px;
+}
+
+#df-chat-wrapper {}

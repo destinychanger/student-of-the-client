@@ -17,6 +17,7 @@ const SearchBar = () => {
   ]
 
   const [inputText, setInputText] = useState("");
+  const [clientSelection, setclientSelection] = useState(false);
 
   let inputHandler = (e) => {
     var text = e.target.value.toLowerCase();
@@ -27,6 +28,10 @@ const SearchBar = () => {
     var clientName = e.target.innerText;
     EventBus.$dispatch("clientName", clientName)
   };
+
+  EventBus.$on('disableClientSelection', (data) => {
+    setclientSelection(data)
+  })
 
   return (
     <div className="main">
@@ -39,6 +44,7 @@ const SearchBar = () => {
             options={clientDropdownList}
             onChange={clientChange}
             renderInput={(params) => <TextField {...params} label="Select Client" />}
+            disabled={clientSelection}
           />
           <TextField
             id="outlined-basic"
