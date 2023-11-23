@@ -70,13 +70,13 @@
   color: rgba(0, 0, 0, 0.7) !important;
   font-weight: 500;
   font-size: 16px;
-  width: calc(80% - 60px) !important;
-  margin-left: 60px !important;
+  width: calc(80% - 15px) !important;
+  /* margin-left: 60px !important; */
 }
 
 .cs-message-input--disabled .cs-message-input__content-editor-wrapper {
   background-color: #F2F4FD !important;
-  width: calc(80% - 60px) !important;
+  width: calc(80% - 15px) !important;
 }
 
 .cs-message-input__content-editor {
@@ -90,11 +90,9 @@
   background-color: #F2F4FD !important;
 }
 
-.cs-chat-container .cs-message-input .cs-message-input__content-editor-wrapper:first-child {}
-
 .footer {
   font-size: 12px;
-  margin: 10px 25px;
+  margin: .8em;
   text-align: left;
   height: 50px;
   padding: 5px;
@@ -216,4 +214,20 @@ table th {
 .pdfReport ul {
   padding: 5px;
   margin: 0;
+}
+
+.refrences {
+  border-bottom: solid 1px #CED2D9;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.refrences ul {
+  padding: 10px;
+  margin: 0;
+}
+
+.refrencesTitle {
+  font-weight: 600;
+  font-size: 16px;
 }
