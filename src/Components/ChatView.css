@@ -219,7 +219,12 @@ table th {
 .refrences {
   border-bottom: solid 1px #CED2D9;
   margin-bottom: 20px;
-  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.refrences:last-child {
+  border-bottom: none;
 }
 
 .refrences ul {
